@@ -79,7 +79,7 @@ int main() {
 	int c;
 
 	//inner
-	/*printf("I'll calculate your body mass index\n");
+	printf("I'll calculate your body mass index\n");
 	printf("How tall are you?\n");
 	scanf("%f", &Human.height);
 	printf("Your height: %f\n", Human.height);
@@ -100,7 +100,7 @@ int main() {
 	printf("randomizer With Rand()\n");
 	randomizerWithRand(100);
 	printf("randomizer\n");
-	randomizer(1, 100);*/
+	randomizer(1, 100);
 
 	//14
 	printf("I'll search amorphus numbers\n");
