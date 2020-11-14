@@ -86,16 +86,80 @@ int Calculate(int number, int count) {
 	return count;
 }
 
+int BinarySearch(int* array, int index, int maxIndex, int minIndex, int request) {
+	
+	if (array[index] == request) return index;
+	else
+	{
+		if (maxIndex - index == 1 || index - minIndex == 1) return -1;
+		if (array[index] < request) {
+			return BinarySearch(array, (maxIndex + index) / 2, maxIndex, index,request);
+		}
+		if (array[index] > request) {
+			return BinarySearch(array, (minIndex + index) / 2, index, minIndex, request);
+		}
+	}
+	return -1;
+}
+
+void fillInTheArray(int* array, int length) {
+	for (int i = 0; i < length; i++)
+	{
+		array[i] = i;
+	}
+}
+
+void fillInTheArrayRandom(int* array, int length) {
+	srand(time(NULL));
+	for (int i = 0; i < length; i++)
+	{
+		array[i] = rand() % 10 + 1;
+	}
+}
+
+void ShakersSort(int* array, int minIndex, int maxIndex) {
+	for (int i = minIndex; i < maxIndex-1; i++) {
+		if (array[i] > array[i + 1]) Exchange(&array[i], &array[i + 1]);
+		
+	}
+	for (int i = maxIndex-1; i > minIndex; i--) {
+		if (array[i] < array[i - 1]) Exchange(&array[i], &array[i - 1]);
+
+	}
+
+	if (maxIndex - minIndex > 1) ShakersSort(array, minIndex + 2, maxIndex - 2);
+}
+
 int main() {
-	//int i = 0;
-	int sum = 1;
+	
+	//3
+	int sizeOfArray;
+	int request;
+	printf("Enter size of array:\n");
+	scanf("%i", &sizeOfArray);
+	printf("Enter your request:\n");
+	scanf("%i", &request);
+	int array[100];
+
+	fillInTheArray(&array, sizeOfArray);
+	printf("Index your request: %i\n", BinarySearch(&array,sizeOfArray/2, sizeOfArray-1, 0, request));
+
+	//2
+
+	int arrayRandom[100];
+
+	fillInTheArrayRandom(&arrayRandom, sizeOfArray);
+	ShakersSort(&arrayRandom,0, sizeOfArray);
+
+
+	/*int sum = 1;
 	while (sum!=0)
 	{
 		printf("Enter your number:\n");
 		scanf("%i", &sum);
 		printf("result %i\n", Calculate(sum, 0));
 	}
-	//i = Calculate(sum, i);
+	*/
 	
 //First
 	/*struct Human Human;
