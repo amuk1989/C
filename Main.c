@@ -70,10 +70,35 @@ void SearchAmorphusNumbers(int number) {
 	}
 }
 
-int main() {
+int Calculate(int number, int count) {
+	if (number == 20) {
+		count++;
+		return count;
+	}
+	if (number + 1 <= 20) {
+		count = Calculate(number + 1, count);
+	}
+	
+	if (number * 2 <= 20) {
+		count = Calculate(number * 2, count);
 
+	}
+	return count;
+}
+
+int main() {
+	//int i = 0;
+	int sum = 1;
+	while (sum!=0)
+	{
+		printf("Enter your number:\n");
+		scanf("%i", &sum);
+		printf("result %i\n", Calculate(sum, 0));
+	}
+	//i = Calculate(sum, i);
+	
 //First
-	struct Human Human;
+	/*struct Human Human;
 	int a;
 	int b;
 	int c;
@@ -116,7 +141,9 @@ int main() {
 	scanf("%i", &b);
 	Exchange(&a,&b);
 	printf("I did exchenge a: %i\n", a);
-	printf("And b: %i\n", b);
+	printf("And b: %i\n", b);*/
+
+	
 
 	return 0;
 }
